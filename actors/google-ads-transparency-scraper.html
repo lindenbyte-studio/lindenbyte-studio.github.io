@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google Ads Transparency Scraper: Competitor Ads Spy | Lindenbyte</title>
+<meta name="description" content="Export every Google ad (Search, YouTube, Display) a competitor runs, by advertiser name, domain or ID. Filter by country, format, date. $1 per 1,000 ads.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/google-ads-transparency-scraper.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="Google Ads Transparency Scraper: Competitor Ads Spy | Lindenbyte">
+<meta property="og:description" content="Export every Google ad (Search, YouTube, Display) a competitor runs, by advertiser name, domain or ID. Filter by country, format, date. $1 per 1,000 ads.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/google-ads-transparency-scraper.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-SabX3BZfodqsPLuZe-j5WvEQLy8O-google-ads-transparency-scraper.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / Google Ads Transparency Center Scraper: Competitor Ads</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-SabX3BZfodqsPLuZe-j5WvEQLy8O-google-ads-transparency-scraper.png" alt="" width="72" height="72">
+<div><h1>Google Ads Transparency Center Scraper: Competitor Ads</h1><p class="lead">Get every ad an advertiser runs on Google (search, YouTube, display) from the Ads Transparency Center, by name, domain or ID. Filter by region, format and date; schedule for new-ad alerts.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/google-ads-transparency-scraper">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Competitor ad monitoring</strong>: schedule it daily with <code>newAdsLastDays: 1</code> to get only the ads a competitor launched since yesterday.</li><li><strong>Creative swipe file</strong>: image URLs, preview links and a deep link to each ad on Google&#x27;s own page.</li><li><strong>Advertiser lead lists</strong>: find which companies advertise in a region and how long they have been running ads.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Ad (main result)</td><td>$0.001</td><td>One ad creative returned in the dataset.</td></tr><tr><td>Actor Start</td><td>$0.003</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Ad": Free $0.001, Bronze $0.0009, Silver $0.0008, Gold $0.0007, Platinum $0.0007, Diamond $0.0007.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/google-ads-transparency-scraper">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;YouTube video ads of a competitor (by domain)&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;queries&quot;: [
+    &quot;shopify.com&quot;
+  ],
+  &quot;region&quot;: &quot;anywhere&quot;,
+  &quot;format&quot;: &quot;video&quot;,
+  &quot;maxAdsPerAdvertiser&quot;: 100
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;queries&#x27;: [&#x27;shopify.com&#x27;],
+    &#x27;region&#x27;: &#x27;anywhere&#x27;,
+    &#x27;format&#x27;: &#x27;video&#x27;,
+    &#x27;maxAdsPerAdvertiser&#x27;: 100}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/google-ads-transparency-scraper&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;queries&quot;: [
+        &quot;shopify.com&quot;
+    ],
+    &quot;region&quot;: &quot;anywhere&quot;,
+    &quot;format&quot;: &quot;video&quot;,
+    &quot;maxAdsPerAdvertiser&quot;: 100
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/google-ads-transparency-scraper&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~google-ads-transparency-scraper/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;queries&quot;: [
+    &quot;shopify.com&quot;
+  ],
+  &quot;region&quot;: &quot;anywhere&quot;,
+  &quot;format&quot;: &quot;video&quot;,
+  &quot;maxAdsPerAdvertiser&quot;: 100
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/google-ads-transparency-scraper/examples/competitor-video-ads-youtube">YouTube video ads of a competitor (by domain)</a><br><span class="small muted">Every YouTube/video ad Google has shown that points to a competitor&#x27;s domain, newest first.</span></li><li><a href="https://apify.com/lindenbyte/google-ads-transparency-scraper/examples/new-google-ads-last-30-days-us">New Google ads launched by an advertiser in the US (30 days)</a><br><span class="small muted">Only ads FIRST shown in the last 30 days (newly launched), in the United States.</span></li><li><a href="https://apify.com/lindenbyte/google-ads-transparency-scraper/examples/competitor-google-ads-germany">Google ads a competitor runs in Germany</a><br><span class="small muted">All ads an advertiser shows in Germany according to the Google Ads Transparency Center: format, first and last shown dates, creative preview links and advertiser details.</span></li><li><a href="https://apify.com/lindenbyte/google-ads-transparency-scraper/examples/google-display-image-ads-of-brand">Image and display ads of a brand on Google</a><br><span class="small muted">Collect the image (display) ads a brand runs on Google, from the Ads Transparency Center: creative image links, first and last shown dates and advertiser.</span></li><li><a href="https://apify.com/lindenbyte/google-ads-transparency-scraper/examples/competitor-google-search-text-ads">Google Search text ads of a competitor</a><br><span class="small muted">The text ads a competitor runs on Google in the US, from the Ads Transparency Center, with first and last shown dates and preview links.</span></li></ul>
+<h2>Tutorials</h2>
+<ul class="tuts"><li><a href="https://dev.to/lindenbyte/spy-on-your-competitors-google-ads-search-youtube-display-and-get-alerted-when-they-launch-new-3b3h">Spy on your competitors&#x27; Google ads (Search, YouTube, Display) and get alerted when they launch new ones</a> <span class="small muted">(dev.to, 2026-11-13)</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/google-ads-transparency-scraper">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

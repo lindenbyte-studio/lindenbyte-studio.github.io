@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bulk Domain History Checker - Wayback Machine age &amp; spam | Lindenbyte</title>
+<meta name="description" content="Check many domains in the Wayback Machine: first capture, archive age, gaps, redirects, past homepage titles, spam and parked flags. For expired domains &amp; SEO.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/wayback-domain-history.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="Bulk Domain History Checker - Wayback Machine age &amp; spam | Lindenbyte">
+<meta property="og:description" content="Check many domains in the Wayback Machine: first capture, archive age, gaps, redirects, past homepage titles, spam and parked flags. For expired domains &amp; SEO.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/wayback-domain-history.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-1GFZMqMbSHNghZsyC-PyphLQNCRX-wayback-domain-history.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / Bulk Domain History Checker (Wayback Machine)</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-1GFZMqMbSHNghZsyC-PyphLQNCRX-wayback-domain-history.png" alt="" width="72" height="72">
+<div><h1>Bulk Domain History Checker (Wayback Machine)</h1><p class="lead">Check the Wayback Machine history of many domains at once: first/last capture, archive age, captures per year, gaps, status codes, redirects to other sites, and archived homepage titles per year with spam, parked and language-change flags. For expired-domain due diligence and SEO.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/wayback-domain-history">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Expired / auction domain buying</strong>: check age, continuity and past use before you bid (GoDaddy Auctions, DropCatch, NameJet, SnapNames lists).</li><li><strong>SEO and link building</strong>: spot domains with a spam past or a long dark period before using them, vet PBN or guest-post sites.</li><li><strong>Brand and M&amp;A research</strong>: when did a site launch, rebrand, redirect, go dark?</li><li><strong>Academic and journalism research</strong>: archive coverage per year for a list of sites.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Domain history summary (main result)</td><td>$0.004</td><td>One history summary row per successfully checked domain. Failed domains are not charged.</td></tr><tr><td>Archived URL</td><td>$0.0003</td><td>One distinct archived URL row (only when includeUrls is on).</td></tr><tr><td>Actor Start</td><td>$0.003</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Domain history summary": Free $0.004, Bronze $0.0036, Silver $0.0032, Gold $0.0028, Platinum $0.0028, Diamond $0.0028.</p>
+<p class="small">Apify Store plan discounts for "Archived URL": Free $0.0003, Bronze $0.00027, Silver $0.00024, Gold $0.00021, Platinum $0.00021, Diamond $0.00021.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/wayback-domain-history">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;Expired domain history check before you buy&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;domains&quot;: [
+    &quot;geocities.com&quot;,
+    &quot;myspace.com&quot;,
+    &quot;digg.com&quot;,
+    &quot;friendster.com&quot;
+  ],
+  &quot;fetchTitles&quot;: true
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;domains&#x27;: [&#x27;geocities.com&#x27;, &#x27;myspace.com&#x27;, &#x27;digg.com&#x27;, &#x27;friendster.com&#x27;],
+    &#x27;fetchTitles&#x27;: True}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/wayback-domain-history&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;domains&quot;: [
+        &quot;geocities.com&quot;,
+        &quot;myspace.com&quot;,
+        &quot;digg.com&quot;,
+        &quot;friendster.com&quot;
+    ],
+    &quot;fetchTitles&quot;: true
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/wayback-domain-history&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~wayback-domain-history/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;domains&quot;: [
+    &quot;geocities.com&quot;,
+    &quot;myspace.com&quot;,
+    &quot;digg.com&quot;,
+    &quot;friendster.com&quot;
+  ],
+  &quot;fetchTitles&quot;: true
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/wayback-domain-history/examples/expired-domain-history-check">Expired domain history check before you buy</a><br><span class="small muted">Bulk check domain age, first and last Wayback snapshot, past page titles and redirects to spot spammy or pharma history before you buy an expired domain.</span></li><li><a href="https://apify.com/lindenbyte/wayback-domain-history/examples/competitor-domain-age">Competitor domain age and archive history</a><br><span class="small muted">Bulk domain age checker: first archived date, number of snapshots per year and past titles for a list of competitor domains, from the Internet Archive.</span></li><li><a href="https://apify.com/lindenbyte/wayback-domain-history/examples/recover-old-website-pages-wayback">List old pages of a website archived in the Wayback Machine</a><br><span class="small muted">Get the domain&#x27;s archive summary plus one row per archived HTML page (first capture date, status and a Wayback link).</span></li><li><a href="https://apify.com/lindenbyte/wayback-domain-history/examples/acquired-domains-redirect-history">Domain redirect history: where did these sites point?</a><br><span class="small muted">Check whether domains were redirected to another site in the past and where to, year by year, from Wayback Machine homepage captures.</span></li><li><a href="https://apify.com/lindenbyte/wayback-domain-history/examples/dot-com-era-website-history">Website history in a date range (dot-com era example)</a><br><span class="small muted">Domain history limited to a range of years (here 1998 to 2008): first and last capture, active years, gaps and the homepage title, description and language per year.</span></li></ul>
+<h2>Tutorials</h2>
+<ul class="tuts"><li><a href="https://dev.to/lindenbyte/check-a-domains-history-before-you-buy-it-bulk-wayback-machine-lookups-for-expired-domain-due-4j6e">Check a domain&#x27;s history before you buy it: bulk Wayback Machine lookups for expired-domain due diligence</a> <span class="small muted">(dev.to, 2026-11-16)</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/wayback-domain-history">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

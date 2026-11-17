@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bulk Website Screenshots + PDF + Visual Change Alerts | Lindenbyte</title>
+<meta name="description" content="Screenshot many URLs per run: full page, desktop/mobile, PNG/JPEG/WebP, PDF, cookie banners hidden. Schedule it to flag pages that visually changed.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/bulk-website-screenshots.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="Bulk Website Screenshots + PDF + Visual Change Alerts | Lindenbyte">
+<meta property="og:description" content="Screenshot many URLs per run: full page, desktop/mobile, PNG/JPEG/WebP, PDF, cookie banners hidden. Schedule it to flag pages that visually changed.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/bulk-website-screenshots.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-nUZX1FYyh52zsklhI-S9BMOrJ9bm-bulk-website-screenshots.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / Bulk Website Screenshots + PDF + Visual Change Detection</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-nUZX1FYyh52zsklhI-S9BMOrJ9bm-bulk-website-screenshots.png" alt="" width="72" height="72">
+<div><h1>Bulk Website Screenshots + PDF + Visual Change Detection</h1><p class="lead">Screenshot hundreds of URLs per run: full page or viewport, desktop/laptop/tablet/mobile, PNG/JPEG/WebP, optional PDF. Hides cookie banners and chat widgets. Schedule it to detect visual changes since the last run.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/bulk-website-screenshots">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Website monitoring</strong>: see when a competitor changes pricing, homepage, landing pages or terms. Get a screenshot of the new version and of the previous one.</li><li><strong>Visual QA and regression checks</strong>: capture every page of your site on every device after a deploy.</li><li><strong>Agencies and SEO</strong>: client reports, before/after redesign snapshots, mobile-friendliness checks.</li><li><strong>Archiving and compliance</strong>: dated full-page screenshots and PDFs of pages, ads and policies.</li><li><strong>Thumbnails and previews</strong> for directories, link previews and dashboards.</li><li><strong>AI and data pipelines</strong>: page images for vision models, alongside the title, final URL and HTTP status.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Screenshot (main result)</td><td>$0.003</td><td>One successful screenshot (URL x device) saved. Failed and HTTP-error pages are free.</td></tr><tr><td>PDF</td><td>$0.0015</td><td>One successful PDF saved (only when savePdf is on).</td></tr><tr><td>Unchanged check</td><td>$0.001</td><td>Page captured and compared but not output because it did not change (onlyChanged mode).</td></tr><tr><td>Actor Start</td><td>$0.0025</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Screenshot": Free $0.003, Bronze $0.0027, Silver $0.0024, Gold $0.0021, Platinum $0.0021, Diamond $0.0021.</p>
+<p class="small">Apify Store plan discounts for "PDF": Free $0.0015, Bronze $0.00135, Silver $0.0012, Gold $0.00105, Platinum $0.00105, Diamond $0.00105.</p>
+<p class="small">Apify Store plan discounts for "Unchanged check": Free $0.001, Bronze $0.0009, Silver $0.0008, Gold $0.0007, Platinum $0.0007, Diamond $0.0007.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/bulk-website-screenshots">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;Competitor Homepage Visual Change Monitor&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;urls&quot;: [
+    &quot;https://www.allbirds.com&quot;,
+    &quot;https://nodejs.org/en&quot;
+  ],
+  &quot;devices&quot;: [
+    &quot;desktop&quot;
+  ],
+  &quot;compareWithPrevious&quot;: true,
+  &quot;changeThreshold&quot;: 2,
+  &quot;stateKey&quot;: &quot;example-competitors&quot;
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;urls&#x27;: [&#x27;https://www.allbirds.com&#x27;, &#x27;https://nodejs.org/en&#x27;],
+    &#x27;devices&#x27;: [&#x27;desktop&#x27;],
+    &#x27;compareWithPrevious&#x27;: True,
+    &#x27;changeThreshold&#x27;: 2,
+    &#x27;stateKey&#x27;: &#x27;example-competitors&#x27;}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/bulk-website-screenshots&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;urls&quot;: [
+        &quot;https://www.allbirds.com&quot;,
+        &quot;https://nodejs.org/en&quot;
+    ],
+    &quot;devices&quot;: [
+        &quot;desktop&quot;
+    ],
+    &quot;compareWithPrevious&quot;: true,
+    &quot;changeThreshold&quot;: 2,
+    &quot;stateKey&quot;: &quot;example-competitors&quot;
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/bulk-website-screenshots&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~bulk-website-screenshots/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;urls&quot;: [
+    &quot;https://www.allbirds.com&quot;,
+    &quot;https://nodejs.org/en&quot;
+  ],
+  &quot;devices&quot;: [
+    &quot;desktop&quot;
+  ],
+  &quot;compareWithPrevious&quot;: true,
+  &quot;changeThreshold&quot;: 2,
+  &quot;stateKey&quot;: &quot;example-competitors&quot;
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/bulk-website-screenshots/examples/competitor-homepages-visual-change">Competitor Homepage Visual Change Monitor</a><br><span class="small muted">Schedule daily: full-page desktop screenshots of competitor homepages, flags pages that visually changed since the last run.</span></li><li><a href="https://apify.com/lindenbyte/bulk-website-screenshots/examples/desktop-mobile-screenshots-and-pdf">Desktop + Mobile Screenshots and PDF of Many URLs</a><br><span class="small muted">Full-page desktop and mobile screenshots plus an A4 PDF for a list of URLs, cookie banners hidden.</span></li><li><a href="https://apify.com/lindenbyte/bulk-website-screenshots/examples/mobile-website-screenshots">Mobile screenshots of many websites (phone size)</a><br><span class="small muted">Full-page mobile screenshots (390x844, phone user agent and touch) of a list of websites.</span></li><li><a href="https://apify.com/lindenbyte/bulk-website-screenshots/examples/website-thumbnails-above-the-fold">Website thumbnails: above-the-fold WebP images</a><br><span class="small muted">Small above-the-fold WebP screenshots of a list of websites, ready to use as thumbnails or previews in directories, link lists and dashboards.</span></li><li><a href="https://apify.com/lindenbyte/bulk-website-screenshots/examples/web-pages-to-pdf-bulk">Convert many web pages to PDF (A4, print styles)</a><br><span class="small muted">Save a list of web pages as PDF files (A4, the page&#x27;s print styles) for archiving, offline reading or compliance records.</span></li><li><a href="https://apify.com/lindenbyte/bulk-website-screenshots/examples/responsive-design-screenshots-4-devices">Responsive design check: desktop, laptop, tablet, mobile</a><br><span class="small muted">Screenshot each page on four devices (desktop 1920, laptop 1366, tablet 820 and mobile 390) to check a responsive layout after a redesign or deploy.</span></li><li><a href="https://apify.com/lindenbyte/bulk-website-screenshots/examples/social-preview-1200x630-screenshots">1200x630 screenshots for social preview images</a><br><span class="small muted">Capture pages at exactly 1200x630, the common Open Graph / social card size, for link previews, blog post covers or social posts.</span></li></ul>
+<h2>Tutorials</h2>
+<ul class="tuts"><li><a href="https://dev.to/lindenbyte/screenshot-100-websites-in-one-run-and-get-alerted-when-a-competitors-page-visually-changes-3a64">Screenshot 100 websites in one run, and get alerted when a competitor&#x27;s page visually changes</a> <span class="small muted">(dev.to, 2026-11-13)</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/bulk-website-screenshots">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

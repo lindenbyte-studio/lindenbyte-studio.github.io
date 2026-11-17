@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shopify Price &amp; Stock Change Monitor: New Products, Restocks | Lindenbyte</title>
+<meta name="description" content="Monitor Shopify stores: full product catalog or only changes since last run (price drops, restocks, sold out, new and removed products). No browser.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/shopify-catalog-change-monitor.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="Shopify Price &amp; Stock Change Monitor: New Products, Restocks | Lindenbyte">
+<meta property="og:description" content="Monitor Shopify stores: full product catalog or only changes since last run (price drops, restocks, sold out, new and removed products). No browser.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/shopify-catalog-change-monitor.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-QBXOMlvIcCQQShhAD-ZB27B0mmIm-shopify-catalog-change-monitor.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / Shopify Catalog &amp; Change Monitor: Prices, Stock, New Products</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-QBXOMlvIcCQQShhAD-ZB27B0mmIm-shopify-catalog-change-monitor.png" alt="" width="72" height="72">
+<div><h1>Shopify Catalog &amp; Change Monitor: Prices, Stock, New Products</h1><p class="lead">Paste Shopify store domains and get their full public product catalog, or only what changed since the last run: new products, price drops, price increases, restocks, sell-outs and removed products. No browser, no login. Pay per result.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/shopify-catalog-change-monitor">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Competitor price monitoring</strong>: watch rival stores, get a row the day a price drops or a sale starts.</li><li><strong>Dropshipping and reselling</strong>: find new arrivals, restocks and sell-outs of products you resell or source.</li><li><strong>Deal and restock alerts</strong>: schedule hourly/daily, filter by keyword and <code>price_drop</code> + <code>restocked</code>, push to Slack, Telegram, e-mail, Zapier or Make through Apify integrations.</li><li><strong>Market research</strong>: catalogs by vendor, product type, price band, sale share, tag usage.</li><li><strong>Assortment tracking for brands and retailers</strong>: which products does a stockist add or remove, which ones sell out first.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Product row (main result)</td><td>$0.0008</td><td>One product returned in catalog mode.</td></tr><tr><td>Change detected</td><td>$0.0015</td><td>One change since the last run: new product, price drop/increase, restock, sold out or removed.</td></tr><tr><td>Actor Start</td><td>$0.002</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Product row": Free $0.0008, Bronze $0.00072, Silver $0.00064, Gold $0.00056, Platinum $0.00056, Diamond $0.00056.</p>
+<p class="small">Apify Store plan discounts for "Change detected": Free $0.0015, Bronze $0.00135, Silver $0.0012, Gold $0.00105, Platinum $0.00105, Diamond $0.00105.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/shopify-catalog-change-monitor">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;Shopify Deal Alerts Price Drops Restocks&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;stores&quot;: [
+    &quot;allbirds.com&quot;,
+    &quot;gymshark.com&quot;
+  ],
+  &quot;mode&quot;: &quot;changes&quot;,
+  &quot;stateKey&quot;: &quot;deals&quot;,
+  &quot;changeTypes&quot;: [
+    &quot;price_drop&quot;,
+    &quot;restocked&quot;
+  ],
+  &quot;minPriceChangePercent&quot;: 10,
+  &quot;maxProductsPerStore&quot;: 5000
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;stores&#x27;: [&#x27;allbirds.com&#x27;, &#x27;gymshark.com&#x27;],
+    &#x27;mode&#x27;: &#x27;changes&#x27;,
+    &#x27;stateKey&#x27;: &#x27;deals&#x27;,
+    &#x27;changeTypes&#x27;: [&#x27;price_drop&#x27;, &#x27;restocked&#x27;],
+    &#x27;minPriceChangePercent&#x27;: 10,
+    &#x27;maxProductsPerStore&#x27;: 5000}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/shopify-catalog-change-monitor&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;stores&quot;: [
+        &quot;allbirds.com&quot;,
+        &quot;gymshark.com&quot;
+    ],
+    &quot;mode&quot;: &quot;changes&quot;,
+    &quot;stateKey&quot;: &quot;deals&quot;,
+    &quot;changeTypes&quot;: [
+        &quot;price_drop&quot;,
+        &quot;restocked&quot;
+    ],
+    &quot;minPriceChangePercent&quot;: 10,
+    &quot;maxProductsPerStore&quot;: 5000
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/shopify-catalog-change-monitor&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~shopify-catalog-change-monitor/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;stores&quot;: [
+    &quot;allbirds.com&quot;,
+    &quot;gymshark.com&quot;
+  ],
+  &quot;mode&quot;: &quot;changes&quot;,
+  &quot;stateKey&quot;: &quot;deals&quot;,
+  &quot;changeTypes&quot;: [
+    &quot;price_drop&quot;,
+    &quot;restocked&quot;
+  ],
+  &quot;minPriceChangePercent&quot;: 10,
+  &quot;maxProductsPerStore&quot;: 5000
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/shopify-catalog-change-monitor/examples/shopify-deal-alerts-price-drops-restocks">Shopify Deal Alerts Price Drops Restocks</a><br><span class="small muted">Watch Shopify stores for price drops of 10%+ and restocks.</span></li><li><a href="https://apify.com/lindenbyte/shopify-catalog-change-monitor/examples/competitor-shopify-sale-catalog">Competitor Shopify Sale Catalog</a><br><span class="small muted">Export the on-sale products of competitor Shopify stores (whole store or one collection) with prices, compare-at prices and stock status.</span></li><li><a href="https://apify.com/lindenbyte/shopify-catalog-change-monitor/examples/export-shopify-store-products">Export all products from a Shopify store (CSV, JSON, Excel)</a><br><span class="small muted">Export the product catalog of any public Shopify store: title, vendor, product type, min/max price, compare-at price, currency, availability, variants count, tags, images and URLs.</span></li><li><a href="https://apify.com/lindenbyte/shopify-catalog-change-monitor/examples/shopify-new-product-alerts">Shopify new product alerts (new arrivals only)</a><br><span class="small muted">Watch a Shopify store for newly added products.</span></li><li><a href="https://apify.com/lindenbyte/shopify-catalog-change-monitor/examples/shopify-back-in-stock-sold-out-monitor">Shopify stock monitor: sold out and back in stock</a><br><span class="small muted">Track stock status changes in a Shopify store: products that sold out and products that came back in stock since the previous run.</span></li><li><a href="https://apify.com/lindenbyte/shopify-catalog-change-monitor/examples/compare-product-prices-across-shopify-stores">Compare product prices across Shopify stores by keyword</a><br><span class="small muted">Search several Shopify stores for the same kind of product (here: hoodies) and get one comparable table of titles, prices, compare-at prices, availability and links.</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/shopify-catalog-change-monitor">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

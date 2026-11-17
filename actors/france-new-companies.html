@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>France New Companies Scraper: BODACC + SIRENE Feed | Lindenbyte</title>
+<meta name="description" content="Daily list of newly registered French companies from BODACC, enriched with SIREN, NAF, legal form, address and headcount. Filter by NAF and département.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/france-new-companies.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="France New Companies Scraper: BODACC + SIRENE Feed | Lindenbyte">
+<meta property="og:description" content="Daily list of newly registered French companies from BODACC, enriched with SIREN, NAF, legal form, address and headcount. Filter by NAF and département.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/france-new-companies.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-jnmnqj3oIYoLBbr44-JGn4wyMswf-france-new-companies.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / France New Company Finder (BODACC + SIRENE, by NAF &amp; Dept)</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-jnmnqj3oIYoLBbr44-JGn4wyMswf-france-new-companies.png" alt="" width="72" height="72">
+<div><h1>France New Company Finder (BODACC + SIRENE, by NAF &amp; Dept)</h1><p class="lead">Daily feed of newly registered French companies (legal entities only) from official BODACC creations, enriched with SIRENE: SIREN/SIRET, NAF, legal form, head office with GPS, employee range, capital, VAT number. Filter by date, NAF, département, region, legal form.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/france-new-companies">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Accountants (experts-comptables), banks, insurers</strong>: reach companies in their first weeks, by département and activity.</li><li><strong>B2B SaaS, agencies, web designers</strong>: new software, e-commerce, construction or restaurant companies by NAF code.</li><li><strong>Real-estate and wealth advisors</strong>: new SCIs and holding companies in your area.</li><li><strong>Market research</strong>: creation trends by sector, legal form and region.</li><li><strong>CRM hygiene and KYC</strong>: SIREN, SIRET and VAT number of new counterparties.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Company (main result)</td><td>$0.002</td><td>One newly registered French company saved, including SIRENE enrichment.</td></tr><tr><td>Actor Start</td><td>$0.003</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Company": Free $0.002, Bronze $0.0018, Silver $0.0016, Gold $0.0014, Platinum $0.0014, Diamond $0.0014.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/france-new-companies">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;New restaurants and cafes registered in Paris&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;publishedLastDays&quot;: 7,
+  &quot;departements&quot;: [
+    &quot;75&quot;
+  ],
+  &quot;nafCodes&quot;: [
+    &quot;56.10A&quot;,
+    &quot;56.10C&quot;,
+    &quot;56.30Z&quot;
+  ],
+  &quot;maxResults&quot;: 200
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;publishedLastDays&#x27;: 7,
+    &#x27;departements&#x27;: [&#x27;75&#x27;],
+    &#x27;nafCodes&#x27;: [&#x27;56.10A&#x27;, &#x27;56.10C&#x27;, &#x27;56.30Z&#x27;],
+    &#x27;maxResults&#x27;: 200}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/france-new-companies&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;publishedLastDays&quot;: 7,
+    &quot;departements&quot;: [
+        &quot;75&quot;
+    ],
+    &quot;nafCodes&quot;: [
+        &quot;56.10A&quot;,
+        &quot;56.10C&quot;,
+        &quot;56.30Z&quot;
+    ],
+    &quot;maxResults&quot;: 200
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/france-new-companies&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~france-new-companies/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;publishedLastDays&quot;: 7,
+  &quot;departements&quot;: [
+    &quot;75&quot;
+  ],
+  &quot;nafCodes&quot;: [
+    &quot;56.10A&quot;,
+    &quot;56.10C&quot;,
+    &quot;56.30Z&quot;
+  ],
+  &quot;maxResults&quot;: 200
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/france-new-companies/examples/new-restaurants-paris">New restaurants and cafes registered in Paris</a><br><span class="small muted">Fresh list of restaurants, cafes and bars created in Paris in the last 7 days from official BODACC + SIRENE data: name, SIREN, address, NAF code.</span></li><li><a href="https://apify.com/lindenbyte/france-new-companies/examples/new-software-companies-france">New software and IT companies in France</a><br><span class="small muted">Leads: newly created French software, IT consulting and web companies (NAF 62.01Z/62.02A/63.12Z) from official BODACC + SIRENE data, last 7 days.</span></li><li><a href="https://apify.com/lindenbyte/france-new-companies/examples/new-companies-lyon-rhone">New companies in Lyon and the Rhone (69)</a><br><span class="small muted">All companies (all industries) newly registered with a head office in the Rhône département (Lyon) in the last 7 days, from BODACC creation notices enriched with SIRENE.</span></li><li><a href="https://apify.com/lindenbyte/france-new-companies/examples/new-ecommerce-companies-france">New e-commerce companies in France (vente en ligne)</a><br><span class="small muted">Companies newly registered in France in the last 7 days whose BODACC activity description mentions online selling (vente en ligne, e-commerce), enriched with SIRENE: SIREN, NAF code, legal form, head office and activity.</span></li><li><a href="https://apify.com/lindenbyte/france-new-companies/examples/new-construction-companies-france">New construction companies in France (BTP)</a><br><span class="small muted">Construction companies (NAF section F: building, civil engineering, specialised trades) newly registered in France in the last 7 days, from BODACC creation notices whose activity mentions building trades, enriched with SIRENE: SIREN/SIRET, NAF code, legal form, head-office address and capital.</span></li></ul>
+<h2>Tutorials</h2>
+<ul class="tuts"><li><a href="https://dev.to/lindenbyte/get-a-daily-list-of-newly-registered-french-companies-in-your-niche-by-naf-code-and-departement-4ld3">Get a daily list of newly registered French companies in your niche (by NAF code and département)</a> <span class="small muted">(dev.to, 2026-11-16)</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/france-new-companies">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

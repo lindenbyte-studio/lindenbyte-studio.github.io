@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bulk PageSpeed &amp; Core Web Vitals Checker (Sitemap) | Lindenbyte</title>
+<meta name="description" content="Audit hundreds of URLs or a whole sitemap with Google PageSpeed Insights: Lighthouse scores, lab + real-user Core Web Vitals, top fixes. No API key needed.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/bulk-pagespeed-core-web-vitals.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="Bulk PageSpeed &amp; Core Web Vitals Checker (Sitemap) | Lindenbyte">
+<meta property="og:description" content="Audit hundreds of URLs or a whole sitemap with Google PageSpeed Insights: Lighthouse scores, lab + real-user Core Web Vitals, top fixes. No API key needed.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/bulk-pagespeed-core-web-vitals.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-mm4Xxieo8jksj7boy-K08z6DXsad-bulk-pagespeed-core-web-vitals.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / Bulk PageSpeed Insights &amp; Core Web Vitals Checker (Sitemap)</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-mm4Xxieo8jksj7boy-K08z6DXsad-bulk-pagespeed-core-web-vitals.png" alt="" width="72" height="72">
+<div><h1>Bulk PageSpeed Insights &amp; Core Web Vitals Checker (Sitemap)</h1><p class="lead">Audit hundreds of URLs or a whole sitemap with Google&#x27;s official PageSpeed Insights API: Lighthouse scores, lab LCP/CLS/TBT, real-user CrUX Core Web Vitals (LCP, INP, CLS) and top fixes, mobile + desktop, with pass/fail thresholds for monitoring.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/bulk-pagespeed-core-web-vitals">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li>SEO agencies: Core Web Vitals report for a client&#x27;s whole sitemap in one CSV.</li><li>Developers: catch performance regressions after a deploy with a scheduled run and thresholds.</li><li>Site owners: find which templates (product pages, blog posts) have poor LCP or CLS, and what to fix first.</li><li>Competitor benchmarking: compare your pages with competitors&#x27; on mobile and desktop.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Audit (main result)</td><td>$0.003</td><td>One successful PageSpeed audit (one URL, one device). Failed URLs are not charged.</td></tr><tr><td>Actor Start</td><td>$0.003</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Audit": Free $0.003, Bronze $0.0027, Silver $0.0024, Gold $0.0021, Platinum $0.0021, Diamond $0.0021.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/bulk-pagespeed-core-web-vitals">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;Compare PageSpeed scores with competitors (mobile + desktop)&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;urls&quot;: [
+    &quot;https://www.shopify.com/&quot;,
+    &quot;https://www.bigcommerce.com/&quot;,
+    &quot;https://woocommerce.com/&quot;
+  ],
+  &quot;strategy&quot;: &quot;both&quot;,
+  &quot;categories&quot;: [
+    &quot;performance&quot;,
+    &quot;seo&quot;
+  ]
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;urls&#x27;: [   &#x27;https://www.shopify.com/&#x27;,
+                &#x27;https://www.bigcommerce.com/&#x27;,
+                &#x27;https://woocommerce.com/&#x27;],
+    &#x27;strategy&#x27;: &#x27;both&#x27;,
+    &#x27;categories&#x27;: [&#x27;performance&#x27;, &#x27;seo&#x27;]}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/bulk-pagespeed-core-web-vitals&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;urls&quot;: [
+        &quot;https://www.shopify.com/&quot;,
+        &quot;https://www.bigcommerce.com/&quot;,
+        &quot;https://woocommerce.com/&quot;
+    ],
+    &quot;strategy&quot;: &quot;both&quot;,
+    &quot;categories&quot;: [
+        &quot;performance&quot;,
+        &quot;seo&quot;
+    ]
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/bulk-pagespeed-core-web-vitals&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~bulk-pagespeed-core-web-vitals/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;urls&quot;: [
+    &quot;https://www.shopify.com/&quot;,
+    &quot;https://www.bigcommerce.com/&quot;,
+    &quot;https://woocommerce.com/&quot;
+  ],
+  &quot;strategy&quot;: &quot;both&quot;,
+  &quot;categories&quot;: [
+    &quot;performance&quot;,
+    &quot;seo&quot;
+  ]
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/bulk-pagespeed-core-web-vitals/examples/competitor-pagespeed-comparison">Compare PageSpeed scores with competitors (mobile + desktop)</a><br><span class="small muted">Benchmark your homepage against competitors on mobile and desktop: Lighthouse performance and SEO scores, LCP, CLS, TBT and real-user Core Web Vitals from the Chrome UX Report.</span></li><li><a href="https://apify.com/lindenbyte/bulk-pagespeed-core-web-vitals/examples/sitemap-core-web-vitals-audit">Core Web Vitals audit of a whole sitemap</a><br><span class="small muted">Point it at a sitemap.xml and run PageSpeed Insights on its pages: Lighthouse score, LCP, CLS, TBT and Google&#x27;s Core Web Vitals assessment per URL, with the top fixes.</span></li><li><a href="https://apify.com/lindenbyte/bulk-pagespeed-core-web-vitals/examples/pagespeed-threshold-monitor">PageSpeed monitor: flag pages below score 80 or slow LCP</a><br><span class="small muted">Check key pages against pass/fail thresholds (performance score 80+, lab LCP under 2.5 s, passing real-user Core Web Vitals).</span></li></ul>
+<h2>Tutorials</h2>
+<ul class="tuts"><li><a href="https://dev.to/lindenbyte/audit-core-web-vitals-for-a-whole-sitemap-in-one-run-and-get-alerted-when-pages-fail-2mfc">Audit Core Web Vitals for a whole sitemap in one run (and get alerted when pages fail)</a> <span class="small muted">(dev.to, 2026-11-13)</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/bulk-pagespeed-core-web-vitals">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

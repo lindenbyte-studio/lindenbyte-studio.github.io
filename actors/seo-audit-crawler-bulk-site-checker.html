@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEO Audit Crawler: Bulk Technical Site Checker | Lindenbyte</title>
+<meta name="description" content="Crawl websites and get a per-page technical SEO audit: titles, meta, H1, canonicals, noindex, broken links, duplicates, alt text.  per 1,000 pages.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/seo-audit-crawler-bulk-site-checker.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="SEO Audit Crawler: Bulk Technical Site Checker | Lindenbyte">
+<meta property="og:description" content="Crawl websites and get a per-page technical SEO audit: titles, meta, H1, canonicals, noindex, broken links, duplicates, alt text.  per 1,000 pages.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/seo-audit-crawler-bulk-site-checker.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-WRHeqAOcrhamAIltK-XNAYXgnO5c-seo-audit-crawler-bulk-site-checker.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / SEO Audit Crawler: Bulk Technical Site Checker</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-WRHeqAOcrhamAIltK-XNAYXgnO5c-seo-audit-crawler-bulk-site-checker.png" alt="" width="72" height="72">
+<div><h1>SEO Audit Crawler: Bulk Technical Site Checker</h1><p class="lead">Crawl one or many websites and get a per-page technical SEO audit: titles, meta descriptions, H1s, canonicals, noindex, broken internal links, duplicates, missing alt text, thin content. Pure HTTP, no browser, pay per page.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/seo-audit-crawler-bulk-site-checker">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li>Quick audit of a new client&#x27;s site before a pitch.</li><li>Weekly scheduled health check; compare <code>issuesByType</code> over time.</li><li>Find broken internal <strong>and external</strong> links and duplicate titles at scale across many domains.</li><li>Pre-launch / post-migration check (noindex left on, canonicals, redirects).</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Page audited (main result)</td><td>$0.004</td><td>One crawled HTML page with its full SEO audit. Errors, non-HTML and site summary rows are free.</td></tr><tr><td>Actor Start</td><td>$0.003</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Page audited": Free $0.004, Bronze $0.0036, Silver $0.0032, Gold $0.0028, Platinum $0.0028, Diamond $0.0028.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/seo-audit-crawler-bulk-site-checker">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;Quick SEO health check (25 pages)&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;startUrls&quot;: [
+    &quot;ghost.org&quot;
+  ],
+  &quot;maxPagesPerSite&quot;: 25,
+  &quot;maxDepth&quot;: 3,
+  &quot;checkExternalLinks&quot;: true,
+  &quot;maxExternalLinksPerSite&quot;: 200
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;startUrls&#x27;: [&#x27;ghost.org&#x27;],
+    &#x27;maxPagesPerSite&#x27;: 25,
+    &#x27;maxDepth&#x27;: 3,
+    &#x27;checkExternalLinks&#x27;: True,
+    &#x27;maxExternalLinksPerSite&#x27;: 200}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/seo-audit-crawler-bulk-site-checker&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;startUrls&quot;: [
+        &quot;ghost.org&quot;
+    ],
+    &quot;maxPagesPerSite&quot;: 25,
+    &quot;maxDepth&quot;: 3,
+    &quot;checkExternalLinks&quot;: true,
+    &quot;maxExternalLinksPerSite&quot;: 200
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/seo-audit-crawler-bulk-site-checker&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~seo-audit-crawler-bulk-site-checker/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;startUrls&quot;: [
+    &quot;ghost.org&quot;
+  ],
+  &quot;maxPagesPerSite&quot;: 25,
+  &quot;maxDepth&quot;: 3,
+  &quot;checkExternalLinks&quot;: true,
+  &quot;maxExternalLinksPerSite&quot;: 200
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/seo-audit-crawler-bulk-site-checker/examples/quick-seo-health-check-25-pages">Quick SEO health check (25 pages)</a><br><span class="small muted">Audit the first 25 pages of a website for technical SEO issues: missing titles and meta descriptions, multiple H1s, broken internal and external links, noindex, missing alt text, thin content.</span></li><li><a href="https://apify.com/lindenbyte/seo-audit-crawler-bulk-site-checker/examples/competitor-seo-comparison">Competitor SEO comparison (3 sites)</a><br><span class="small muted">Crawl your site and two competitors side by side (20 pages each) and compare average SEO score, issue counts and duplicate titles per site in the summary rows.</span></li><li><a href="https://apify.com/lindenbyte/seo-audit-crawler-bulk-site-checker/examples/broken-link-checker-internal-external">Broken link checker: internal and external links</a><br><span class="small muted">Crawl a site and find broken links: internal links to pages that return errors and outbound links that return 404/410/5xx, point to dead domains or fail TLS.</span></li><li><a href="https://apify.com/lindenbyte/seo-audit-crawler-bulk-site-checker/examples/blog-section-seo-audit">SEO audit of one site section (blog only)</a><br><span class="small muted">Audit only one section of a site, here the blog, by following URLs that match an include pattern.</span></li><li><a href="https://apify.com/lindenbyte/seo-audit-crawler-bulk-site-checker/examples/duplicate-title-meta-description-finder">Find duplicate titles and meta descriptions</a><br><span class="small muted">Crawl up to 40 pages of a site and group pages that share the same title, meta description or H1.</span></li><li><a href="https://apify.com/lindenbyte/seo-audit-crawler-bulk-site-checker/examples/post-migration-seo-check">Post-migration SEO check: noindex, canonicals, redirects</a><br><span class="small muted">After a redesign or migration, check that pages are not left on noindex, canonicals point to the right URLs, internal links do not go through redirects and nothing returns errors.</span></li></ul>
+<h2>Tutorials</h2>
+<ul class="tuts"><li><a href="https://dev.to/lindenbyte/audit-any-websites-technical-seo-in-under-a-minute-and-compare-it-with-competitors-using-python-1e04">Audit any website&#x27;s technical SEO in under a minute (and compare it with competitors) using Python</a> <span class="small muted">(dev.to, 2026-11-16)</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/seo-audit-crawler-bulk-site-checker">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEC Form D Feed: Recently Funded Companies (Crunchbase alt) | Lindenbyte</title>
+<meta name="description" content="Daily feed of new SEC Form D filings: companies that just raised money, amount sold/offered, industry, state, exemption. Filter and schedule. Pay per filing.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/sec-form-d-recently-funded-companies.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="SEC Form D Feed: Recently Funded Companies (Crunchbase alt) | Lindenbyte">
+<meta property="og:description" content="Daily feed of new SEC Form D filings: companies that just raised money, amount sold/offered, industry, state, exemption. Filter and schedule. Pay per filing.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/sec-form-d-recently-funded-companies.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-G0PaAkLOSVloR8WOo-gFEcpK4r6D-sec-form-d-recently-funded-companies.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / SEC Form D Feed: Recently Funded Companies &amp; Private Placements</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-G0PaAkLOSVloR8WOo-gFEcpK4r6D-sec-form-d-recently-funded-companies.png" alt="" width="72" height="72">
+<div><h1>SEC Form D Feed: Recently Funded Companies &amp; Private Placements</h1><p class="lead">Daily feed of new SEC Form D filings: companies that just raised money in private placements. Amount raised and offered, investors, industry, state, exemption, address and phone, straight from EDGAR. Filters, only-new-since-last-run, CSV ready. Pay per filing.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/sec-form-d-recently-funded-companies">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Sales prospecting:</strong> companies that just raised $1M+ have new budget for software, hiring, offices, insurance and services. Call or email them while the money is fresh.</li><li><strong>Recruiting and staffing:</strong> freshly funded startups hire right after a round. Filter by state and the Technology or Health Care sector.</li><li><strong>Commercial real estate, banking, insurance, payroll and accounting firms:</strong> new money means new offices, bank accounts and policies.</li><li><strong>Investors and analysts:</strong> track who is raising, how much, how fast (amount sold vs. offered) and from how many investors. Filter <code>federalExemptions: 06c</code> for offerings that are publicly marketed.</li><li><strong>Fund and SPV launches:</strong> turn off <code>excludePooledFunds</code> and filter by fund type (Venture Capital Fund, Private Equity Fund, Hedge Fund).</li><li><strong>Local business news:</strong> all new raises in your state, every morning.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Form D filing (main result)</td><td>$0.006</td><td>One Form D filing (issuer, amounts raised/offered, industry, state, exemptions) returned in the dataset.</td></tr><tr><td>Actor Start</td><td>$0.003</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Form D filing": Free $0.006, Bronze $0.0054, Silver $0.0048, Gold $0.0042, Platinum $0.0042, Diamond $0.0042.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/sec-form-d-recently-funded-companies">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;California Tech Health Startups Raised 1m&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;lastDays&quot;: 3,
+  &quot;states&quot;: [
+    &quot;CA&quot;
+  ],
+  &quot;industryGroups&quot;: [
+    &quot;Technology&quot;,
+    &quot;Health Care&quot;
+  ],
+  &quot;minAmountSold&quot;: 1000000,
+  &quot;excludeAmendments&quot;: true,
+  &quot;onlyNewSinceLastRun&quot;: true,
+  &quot;stateKey&quot;: &quot;task-ca-tech-health&quot;
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;lastDays&#x27;: 3,
+    &#x27;states&#x27;: [&#x27;CA&#x27;],
+    &#x27;industryGroups&#x27;: [&#x27;Technology&#x27;, &#x27;Health Care&#x27;],
+    &#x27;minAmountSold&#x27;: 1000000,
+    &#x27;excludeAmendments&#x27;: True,
+    &#x27;onlyNewSinceLastRun&#x27;: True,
+    &#x27;stateKey&#x27;: &#x27;task-ca-tech-health&#x27;}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/sec-form-d-recently-funded-companies&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;lastDays&quot;: 3,
+    &quot;states&quot;: [
+        &quot;CA&quot;
+    ],
+    &quot;industryGroups&quot;: [
+        &quot;Technology&quot;,
+        &quot;Health Care&quot;
+    ],
+    &quot;minAmountSold&quot;: 1000000,
+    &quot;excludeAmendments&quot;: true,
+    &quot;onlyNewSinceLastRun&quot;: true,
+    &quot;stateKey&quot;: &quot;task-ca-tech-health&quot;
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/sec-form-d-recently-funded-companies&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~sec-form-d-recently-funded-companies/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;lastDays&quot;: 3,
+  &quot;states&quot;: [
+    &quot;CA&quot;
+  ],
+  &quot;industryGroups&quot;: [
+    &quot;Technology&quot;,
+    &quot;Health Care&quot;
+  ],
+  &quot;minAmountSold&quot;: 1000000,
+  &quot;excludeAmendments&quot;: true,
+  &quot;onlyNewSinceLastRun&quot;: true,
+  &quot;stateKey&quot;: &quot;task-ca-tech-health&quot;
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/sec-form-d-recently-funded-companies/examples/california-tech-health-startups-raised-1m">California Tech Health Startups Raised 1m</a><br><span class="small muted">Daily list of California tech and health-care startups that just raised $1M+, from new SEC Form D filings.</span></li><li><a href="https://apify.com/lindenbyte/sec-form-d-recently-funded-companies/examples/us-companies-raised-5m-this-week">Us Companies Raised 5m This Week</a><br><span class="small muted">Every US operating company that raised $5M+ in a private placement in the last 7 days (SEC Form D), pooled funds and SPVs excluded.</span></li><li><a href="https://apify.com/lindenbyte/sec-form-d-recently-funded-companies/examples/biotech-pharma-companies-raised-money">Biotech and pharma companies that raised money (last 7 days)</a><br><span class="small muted">Biotech and pharmaceutical companies that filed a new SEC Form D in the last 7 days: issuer, amount sold, total offering, investors, first sale date, state, exemptions and filing link.</span></li><li><a href="https://apify.com/lindenbyte/sec-form-d-recently-funded-companies/examples/new-venture-capital-private-equity-funds">New venture capital and private equity funds raising (Form D)</a><br><span class="small muted">Venture capital and private equity funds that filed a new Form D with the SEC in the last 7 days: fund name, amount raised so far, offering size, number of investors and filing link.</span></li><li><a href="https://apify.com/lindenbyte/sec-form-d-recently-funded-companies/examples/real-estate-private-placements">Real estate private placements filed with the SEC (Form D)</a><br><span class="small muted">Real estate companies and projects (commercial, residential, construction, REITs) that filed a new Form D in the last 7 days, with amount sold, offering size, investors, state and filing link.</span></li><li><a href="https://apify.com/lindenbyte/sec-form-d-recently-funded-companies/examples/new-york-startups-funding-1m">New York companies that raised $1M+ (SEC Form D)</a><br><span class="small muted">Operating companies based in New York that reported at least $1M sold in a new SEC Form D in the last 7 days (funds and SPVs excluded).</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/sec-form-d-recently-funded-companies">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

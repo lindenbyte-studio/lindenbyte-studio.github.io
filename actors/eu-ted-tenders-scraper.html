@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EU Tenders Scraper (TED): Public Procurement Notices | Lindenbyte</title>
+<meta name="description" content="Export EU public tenders from TED by keyword, country, CPV code and notice type. Daily procurement alerts for all EU countries as JSON, CSV or Excel.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/eu-ted-tenders-scraper.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="EU Tenders Scraper (TED): Public Procurement Notices | Lindenbyte">
+<meta property="og:description" content="Export EU public tenders from TED by keyword, country, CPV code and notice type. Daily procurement alerts for all EU countries as JSON, CSV or Excel.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/eu-ted-tenders-scraper.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-DrkPzDNtr4cna4ZrP-gtTVxR4IkC-eu-ted-tenders-scraper.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / EU Public Tenders (TED) Scraper: Bids &amp; Contract Notices</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-DrkPzDNtr4cna4ZrP-gtTVxR4IkC-eu-ted-tenders-scraper.png" alt="" width="72" height="72">
+<div><h1>EU Public Tenders (TED) Scraper: Bids &amp; Contract Notices</h1><p class="lead">Search EU public procurement tenders on TED by keyword, country, CPV code and notice type. Official API, structured data, schedule daily for new-tender alerts.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/eu-ted-tenders-scraper">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Daily tender alerts:</strong> schedule a daily run and send new tenders to Slack, email, Google Sheets, Zapier, Make or n8n.</li><li><strong>Lead generation:</strong> find public buyers (ministries, municipalities, hospitals, utilities) looking for what you sell.</li><li><strong>Bid pipeline:</strong> pull every open contract notice for your CPV codes and countries, sorted by deadline.</li><li><strong>Market research:</strong> see who buys what, where and for how much, using estimated values and award notices.</li><li><strong>Competitor tracking:</strong> use award notices (<code>can-standard</code>) to see which contracts were awarded.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Tender (main result)</td><td>$0.003</td><td>Charged per tender notice returned.</td></tr><tr><td>Actor Start</td><td>$0.005</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Tender": Free $0.003, Bronze $0.0027, Silver $0.0024, Gold $0.0021, Platinum $0.0021, Diamond $0.0021.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/eu-ted-tenders-scraper">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;EU TED IT &amp; software tenders in Germany (CPV 72)&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;keywords&quot;: [],
+  &quot;buyerCountries&quot;: [
+    &quot;DEU&quot;
+  ],
+  &quot;cpvCodes&quot;: [
+    &quot;72000000&quot;
+  ],
+  &quot;publishedWithinDays&quot;: 7,
+  &quot;maxResults&quot;: 100
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;keywords&#x27;: [],
+    &#x27;buyerCountries&#x27;: [&#x27;DEU&#x27;],
+    &#x27;cpvCodes&#x27;: [&#x27;72000000&#x27;],
+    &#x27;publishedWithinDays&#x27;: 7,
+    &#x27;maxResults&#x27;: 100}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/eu-ted-tenders-scraper&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;keywords&quot;: [],
+    &quot;buyerCountries&quot;: [
+        &quot;DEU&quot;
+    ],
+    &quot;cpvCodes&quot;: [
+        &quot;72000000&quot;
+    ],
+    &quot;publishedWithinDays&quot;: 7,
+    &quot;maxResults&quot;: 100
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/eu-ted-tenders-scraper&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~eu-ted-tenders-scraper/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;keywords&quot;: [],
+  &quot;buyerCountries&quot;: [
+    &quot;DEU&quot;
+  ],
+  &quot;cpvCodes&quot;: [
+    &quot;72000000&quot;
+  ],
+  &quot;publishedWithinDays&quot;: 7,
+  &quot;maxResults&quot;: 100
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/eu-ted-tenders-scraper/examples/ted-it-software-tenders-germany">EU TED IT &amp; software tenders in Germany (CPV 72)</a><br><span class="small muted">Public IT and software tenders from German buyers, published on TED (Tenders Electronic Daily) in the last 7 days under CPV division 72 (IT services: consulting, software development, Internet and support).</span></li><li><a href="https://apify.com/lindenbyte/eu-ted-tenders-scraper/examples/ted-construction-works-tenders-eu">EU TED construction works tenders, all EU (CPV 45)</a><br><span class="small muted">Construction works tenders from every EU country, published on TED (Tenders Electronic Daily) in the last 3 days under CPV division 45 (construction work).</span></li></ul>
+<h2>Tutorials</h2>
+<ul class="tuts"><li><a href="https://dev.to/lindenbyte/who-wins-eu-public-contracts-in-your-niche-build-a-competitor-list-from-ted-award-notices-5e8h">Who wins EU public contracts in your niche? Build a competitor list from TED award notices</a> <span class="small muted">(dev.to, 2026-11-13)</span></li><li><a href="https://dev.to/lindenbyte/get-daily-eu-tender-alerts-for-your-cpv-codes-in-slack-or-email-3i9j">Get daily EU tender alerts for your CPV codes in Slack or email</a> <span class="small muted">(dev.to, 2026-11-12)</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/eu-ted-tenders-scraper">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

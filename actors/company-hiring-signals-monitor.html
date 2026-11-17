@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Company Hiring Signals Monitor: Jobs from Greenhouse, Lever | Lindenbyte</title>
+<meta name="description" content="Paste company domains, get open jobs from Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Personio + new/closed roles per company.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/company-hiring-signals-monitor.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="Company Hiring Signals Monitor: Jobs from Greenhouse, Lever | Lindenbyte">
+<meta property="og:description" content="Paste company domains, get open jobs from Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Personio + new/closed roles per company.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/company-hiring-signals-monitor.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-tOPOeE2fjQQadFnw1-09tPnuggPC-company-hiring-signals-monitor.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / Company Hiring Signals Monitor: Open Jobs, New &amp; Closed Roles</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-tOPOeE2fjQQadFnw1-09tPnuggPC-company-hiring-signals-monitor.png" alt="" width="72" height="72">
+<div><h1>Company Hiring Signals Monitor: Open Jobs, New &amp; Closed Roles</h1><p class="lead">Paste company domains and get their open jobs straight from the official job-board APIs (Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Personio). Hiring-signal summaries per company, new and closed roles since the last run. Pay per result.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/company-hiring-signals-monitor">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Sales and lead generation</strong>: find companies that are hiring for the role your product replaces or supports (SDRs, data engineers, DevOps, compliance) and reach out while the need is fresh.</li><li><strong>Recruiting and staffing agencies</strong>: watch target accounts and get an alert the day a new role opens.</li><li><strong>Competitor and market intelligence</strong>: track a competitor&#x27;s or a whole sector&#x27;s hiring by department, location and seniority, and see growth or freezes over time.</li><li><strong>Investor and analyst research</strong>: weekly open-role counts, roles posted in the last 7/30/90 days, net change since last run.</li><li><strong>Job seekers</strong>: monitor your dream companies, filter by keyword, department, location or remote.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Job row (main result)</td><td>$0.0015</td><td>One open job posting returned in the dataset.</td></tr><tr><td>Company summary</td><td>$0.005</td><td>One hiring-signal summary per company (open roles, new/closed since last run, departments, locations).</td></tr><tr><td>Actor Start</td><td>$0.003</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Job row": Free $0.0015, Bronze $0.00135, Silver $0.0012, Gold $0.00105, Platinum $0.00105, Diamond $0.00105.</p>
+<p class="small">Apify Store plan discounts for "Company summary": Free $0.005, Bronze $0.0045, Silver $0.004, Gold $0.0035, Platinum $0.0035, Diamond $0.0035.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/company-hiring-signals-monitor">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;Weekly Hiring Trends Dashboard&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;companies&quot;: [
+    &quot;stripe.com&quot;,
+    &quot;notion.so&quot;,
+    &quot;linear.app&quot;,
+    &quot;vercel.com&quot;,
+    &quot;mistral.ai&quot;
+  ],
+  &quot;outputJobRows&quot;: false,
+  &quot;includeCompanySummary&quot;: true,
+  &quot;stateKey&quot;: &quot;weekly-trends&quot;
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;companies&#x27;: [&#x27;stripe.com&#x27;, &#x27;notion.so&#x27;, &#x27;linear.app&#x27;, &#x27;vercel.com&#x27;, &#x27;mistral.ai&#x27;],
+    &#x27;outputJobRows&#x27;: False,
+    &#x27;includeCompanySummary&#x27;: True,
+    &#x27;stateKey&#x27;: &#x27;weekly-trends&#x27;}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/company-hiring-signals-monitor&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;companies&quot;: [
+        &quot;stripe.com&quot;,
+        &quot;notion.so&quot;,
+        &quot;linear.app&quot;,
+        &quot;vercel.com&quot;,
+        &quot;mistral.ai&quot;
+    ],
+    &quot;outputJobRows&quot;: false,
+    &quot;includeCompanySummary&quot;: true,
+    &quot;stateKey&quot;: &quot;weekly-trends&quot;
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/company-hiring-signals-monitor&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~company-hiring-signals-monitor/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;companies&quot;: [
+    &quot;stripe.com&quot;,
+    &quot;notion.so&quot;,
+    &quot;linear.app&quot;,
+    &quot;vercel.com&quot;,
+    &quot;mistral.ai&quot;
+  ],
+  &quot;outputJobRows&quot;: false,
+  &quot;includeCompanySummary&quot;: true,
+  &quot;stateKey&quot;: &quot;weekly-trends&quot;
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/company-hiring-signals-monitor/examples/weekly-hiring-trends-dashboard">Weekly Hiring Trends Dashboard</a><br><span class="small muted">One summary row per company: open roles, new and closed roles since last week, top departments and locations.</span></li><li><a href="https://apify.com/lindenbyte/company-hiring-signals-monitor/examples/new-sales-job-alerts">New Sales Job Alerts</a><br><span class="small muted">Get alerted when target accounts open new sales roles (account executive, SDR).</span></li><li><a href="https://apify.com/lindenbyte/company-hiring-signals-monitor/examples/engineering-jobs-at-target-companies">Engineering jobs at a list of tech companies</a><br><span class="small muted">List the open engineering roles at a set of companies, read from their public job boards (Greenhouse, Lever, Ashby and more): title, team, location, remote/hybrid, seniority, posting date and link, plus a hiring summary per company.</span></li><li><a href="https://apify.com/lindenbyte/company-hiring-signals-monitor/examples/remote-jobs-at-companies">Remote jobs at remote-first companies</a><br><span class="small muted">Collect only the remote job openings from the public job boards of companies you pick.</span></li><li><a href="https://apify.com/lindenbyte/company-hiring-signals-monitor/examples/companies-hiring-in-berlin">Who is hiring in Berlin? Jobs by city at chosen companies</a><br><span class="small muted">Filter the open jobs of a list of companies by location (here: Berlin).</span></li><li><a href="https://apify.com/lindenbyte/company-hiring-signals-monitor/examples/greenhouse-lever-job-board-scraper">Greenhouse, Lever and Ashby job board scraper</a><br><span class="small muted">Read job boards directly by ATS and board slug (greenhouse:airbnb, lever:palantir, ashby:notion) through their public job APIs.</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/company-hiring-signals-monitor">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

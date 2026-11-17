@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sitemap Monitor: All URLs + New Pages Since Last Run | Lindenbyte</title>
+<meta name="description" content="Extract every URL from any site&#x27;s XML sitemaps and schedule it to get only new pages since the last run. lastmod, hreflang, HTTP status check.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/sitemap-monitor-new-pages.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="Sitemap Monitor: All URLs + New Pages Since Last Run | Lindenbyte">
+<meta property="og:description" content="Extract every URL from any site&#x27;s XML sitemaps and schedule it to get only new pages since the last run. lastmod, hreflang, HTTP status check.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/sitemap-monitor-new-pages.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-6pED7CixfdvovbJ1y-Cn1gUdN39p-sitemap-monitor-new-pages.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / Sitemap Monitor: All URLs + New Pages Since Last Run</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-6pED7CixfdvovbJ1y-Cn1gUdN39p-sitemap-monitor-new-pages.png" alt="" width="72" height="72">
+<div><h1>Sitemap Monitor: All URLs + New Pages Since Last Run</h1><p class="lead">Extract every URL from any website&#x27;s XML sitemaps (robots.txt discovery, indexes, .xml.gz, hreflang, images) and schedule it to get only NEW pages since the last run. Optional HTTP status and redirect check.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/sitemap-monitor-new-pages">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Competitor monitoring</strong>: new product pages, blog posts, landing pages, locations, job pages.</li><li><strong>SEO audits</strong>: full URL inventory, sitemap URLs that 404 or redirect, stale <code>lastmod</code>, hreflang coverage.</li><li><strong>Content teams and agencies</strong>: weekly list of what clients or competitors published.</li><li><strong>Crawling pipelines</strong>: feed only new URLs into a scraper instead of re-crawling the whole site.</li><li><strong>E-commerce</strong>: new SKUs on a competitor&#x27;s store the day they go live.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>URL (main result)</td><td>$0.0005</td><td>One sitemap URL saved to the dataset (filtered, already-seen and silent-baseline URLs are free).</td></tr><tr><td>Status check</td><td>$0.001</td><td>One successful HTTP status/redirect check (only when checkStatus is on).</td></tr><tr><td>Proxied request</td><td>$0.01</td><td>One request sent through your proxy (only when the optional proxy is enabled and a site blocks direct requests). Covers proxy traffic.</td></tr><tr><td>Actor Start</td><td>$0.003</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "URL": Free $0.0005, Bronze $0.00045, Silver $0.0004, Gold $0.00035, Platinum $0.00035, Diamond $0.00035.</p>
+<p class="small">Apify Store plan discounts for "Status check": Free $0.001, Bronze $0.0009, Silver $0.0008, Gold $0.0007, Platinum $0.0007, Diamond $0.0007.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/sitemap-monitor-new-pages">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;New Product Pages Monitor for a Shopify Store&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;sites&quot;: [
+    &quot;www.allbirds.com&quot;
+  ],
+  &quot;onlyNew&quot;: true,
+  &quot;emitOnBaseline&quot;: false,
+  &quot;stateKey&quot;: &quot;example-products&quot;,
+  &quot;urlPattern&quot;: &quot;/products/&quot;
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;sites&#x27;: [&#x27;www.allbirds.com&#x27;],
+    &#x27;onlyNew&#x27;: True,
+    &#x27;emitOnBaseline&#x27;: False,
+    &#x27;stateKey&#x27;: &#x27;example-products&#x27;,
+    &#x27;urlPattern&#x27;: &#x27;/products/&#x27;}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/sitemap-monitor-new-pages&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;sites&quot;: [
+        &quot;www.allbirds.com&quot;
+    ],
+    &quot;onlyNew&quot;: true,
+    &quot;emitOnBaseline&quot;: false,
+    &quot;stateKey&quot;: &quot;example-products&quot;,
+    &quot;urlPattern&quot;: &quot;/products/&quot;
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/sitemap-monitor-new-pages&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~sitemap-monitor-new-pages/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;sites&quot;: [
+    &quot;www.allbirds.com&quot;
+  ],
+  &quot;onlyNew&quot;: true,
+  &quot;emitOnBaseline&quot;: false,
+  &quot;stateKey&quot;: &quot;example-products&quot;,
+  &quot;urlPattern&quot;: &quot;/products/&quot;
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/sitemap-monitor-new-pages/examples/new-product-pages-shopify-store">New Product Pages Monitor for a Shopify Store</a><br><span class="small muted">Daily feed of new product URLs added to a store sitemap (onlyNew + /products/ filter).</span></li><li><a href="https://apify.com/lindenbyte/sitemap-monitor-new-pages/examples/sitemap-404-redirect-check">Find 404s and Redirects in a Sitemap</a><br><span class="small muted">Reads every sitemap URL and checks its HTTP status, final URL and redirect count.</span></li><li><a href="https://apify.com/lindenbyte/sitemap-monitor-new-pages/examples/competitor-blog-new-posts-sitemap">Competitor blog: new posts from the sitemap</a><br><span class="small muted">Monitor a competitor&#x27;s blog through its sitemap: the first run lists the current posts, later runs output only new URLs that match the pattern.</span></li><li><a href="https://apify.com/lindenbyte/sitemap-monitor-new-pages/examples/pages-updated-last-7-days-sitemap">Pages changed in the last 7 days (sitemap lastmod)</a><br><span class="small muted">List the pages of a site whose sitemap lastmod date is within the last 7 days, i.e.</span></li><li><a href="https://apify.com/lindenbyte/sitemap-monitor-new-pages/examples/extract-all-urls-from-sitemap">Extract all URLs from a sitemap (sitemap to CSV)</a><br><span class="small muted">Get every URL listed in a website&#x27;s sitemaps as a table: sitemaps are found via robots.txt and common paths, nested sitemap indexes and .xml.gz files are followed.</span></li></ul>
+<h2>Tutorials</h2>
+<ul class="tuts"><li><a href="https://dev.to/lindenbyte/get-notified-when-a-competitor-publishes-new-pages-monitor-any-sitemap-for-new-urls-39g7">Get notified when a competitor publishes new pages: monitor any sitemap for new URLs</a> <span class="small muted">(dev.to, 2026-11-13)</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/sitemap-monitor-new-pages">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>

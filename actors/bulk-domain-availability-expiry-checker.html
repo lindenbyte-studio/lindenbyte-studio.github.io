@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bulk Domain Availability &amp; Expiry Checker (RDAP) | Lindenbyte</title>
+<meta name="description" content="Check domains in bulk via official RDAP: available or taken, expiry date, registrar, EPP status, nameservers. Name x TLD matrix and change monitor. $1 per 1,000.">
+<link rel="canonical" href="https://lindenbyte-studio.github.io/actors/bulk-domain-availability-expiry-checker.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lindenbyte">
+<meta property="og:title" content="Bulk Domain Availability &amp; Expiry Checker (RDAP) | Lindenbyte">
+<meta property="og:description" content="Check domains in bulk via official RDAP: available or taken, expiry date, registrar, EPP status, nameservers. Name x TLD matrix and change monitor. $1 per 1,000.">
+<meta property="og:url" content="https://lindenbyte-studio.github.io/actors/bulk-domain-availability-expiry-checker.html">
+<meta property="og:image" content="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-3OYM4GPeo8VNNe5hF-4oUrzVl1Ob-bulk-domain-availability-expiry-checker.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="../index.html">Lindenbyte</a>
+<nav><a href="../index.html#actors">Actors</a><a href="../tutorials.html">Tutorials</a><a href="https://apify.com/lindenbyte">Apify Store</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="small muted"><a href="../index.html">Catalogue</a> / Bulk Domain Availability &amp; Expiry Checker (RDAP)</p>
+<div class="hero"><img src="https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/M32xE2rbihUYlrsnT-actor-3OYM4GPeo8VNNe5hF-4oUrzVl1Ob-bulk-domain-availability-expiry-checker.png" alt="" width="72" height="72">
+<div><h1>Bulk Domain Availability &amp; Expiry Checker (RDAP)</h1><p class="lead">Check thousands of domains for availability, expiry date, registrar, EPP status and nameservers via official registry RDAP (every RDAP TLD), with DNS fallback for ccTLDs. Name x TLD matrix for brand hunting and a monitor mode that outputs only changes.</p>
+<p><a class="btn" href="https://apify.com/lindenbyte/bulk-domain-availability-expiry-checker">Run it on Apify</a></p></div></div>
+<h2>What you can do with it</h2>
+<ul><li><strong>Brand and startup name hunting:</strong> enter name ideas and extensions (<code>acme</code>, <code>lindenbyte</code> x <code>com</code>, <code>io</code>, <code>ai</code>, <code>dev</code>) and get the full matrix of what is free.</li><li><strong>Domain portfolio audit:</strong> expiry dates, days left and registrar for every domain you or your clients own, in one table. Use <code>expiringWithinDays</code> to flag renewals due soon.</li><li><strong>Expiry and drop monitoring:</strong> schedule the Actor in <strong>monitor mode</strong> and get only the domains that changed since the last run: a domain became available, was renewed, changed registrar or nameservers, entered <code>redemptionPeriod</code> / <code>pendingDelete</code>, or entered your expiry window.</li><li><strong>Lead and research enrichment:</strong> registrar, age (creation date) and, optionally, DNS records (A, AAAA, MX, NS, SPF, DMARC) for lists of company domains.</li><li><strong>Brand protection:</strong> watch typo and look-alike domains of your brand and get told when one gets registered.</li></ul>
+<h2>Pricing</h2>
+<p>Pay per event: you are charged only for what the Actor produces, plus a small start fee per run. Apify platform usage is included in these prices.</p>
+<table><tr><th>Event</th><th>Price (USD)</th><th>When it is charged</th></tr><tr><td>Domain checked (main result)</td><td>$0.001</td><td>One domain row with availability/expiry data. Unknown results and unchanged domains in monitor mode are free.</td></tr><tr><td>DNS records lookup</td><td>$0.001</td><td>Optional DNS records (A/AAAA/MX/NS/SPF/DMARC) for a registered domain, only when includeDns is on.</td></tr><tr><td>Actor Start</td><td>$0.002</td><td>Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).</td></tr></table>
+<p class="small">Apify Store plan discounts for "Domain checked": Free $0.001, Bronze $0.0009, Silver $0.0008, Gold $0.0007, Platinum $0.0007, Diamond $0.0007.</p>
+<p class="small">Apify Store plan discounts for "DNS records lookup": Free $0.001, Bronze $0.0009, Silver $0.0008, Gold $0.0007, Platinum $0.0007, Diamond $0.0007.</p>
+<p class="small muted">Prices as listed on the <a href="https://apify.com/lindenbyte/bulk-domain-availability-expiry-checker">Store page</a> when this page was built; the Store page is authoritative.</p>
+<h2>Example input</h2>
+<p class="small muted">Input of the public example task &quot;Brand name domain finder (name x TLD)&quot;. All fields are documented on the Store page's Input tab.</p>
+<pre><code>{
+  &quot;keywords&quot;: [
+    &quot;lindenbyte&quot;,
+    &quot;northpeak&quot;,
+    &quot;brightlark&quot;
+  ],
+  &quot;tlds&quot;: [
+    &quot;com&quot;,
+    &quot;io&quot;,
+    &quot;ai&quot;,
+    &quot;dev&quot;,
+    &quot;co&quot;,
+    &quot;app&quot;
+  ],
+  &quot;mode&quot;: &quot;check&quot;
+}</code></pre>
+<h2>Run it from code</h2>
+<p>Get an API token in the Apify Console (Settings, API &amp; Integrations) and replace <code>&lt;YOUR_APIFY_TOKEN&gt;</code>.</p>
+<details open><summary>Python (apify-client)</summary><pre><code># pip install apify-client
+from apify_client import ApifyClient
+
+client = ApifyClient(&quot;&lt;YOUR_APIFY_TOKEN&gt;&quot;)
+
+run_input = {   &#x27;keywords&#x27;: [&#x27;lindenbyte&#x27;, &#x27;northpeak&#x27;, &#x27;brightlark&#x27;],
+    &#x27;tlds&#x27;: [&#x27;com&#x27;, &#x27;io&#x27;, &#x27;ai&#x27;, &#x27;dev&#x27;, &#x27;co&#x27;, &#x27;app&#x27;],
+    &#x27;mode&#x27;: &#x27;check&#x27;}
+
+# Start the Actor and wait for it to finish
+run = client.actor(&quot;lindenbyte/bulk-domain-availability-expiry-checker&quot;).call(run_input=run_input)
+
+# Read the results from the run&#x27;s default dataset
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
+</code></pre></details>
+<details><summary>JavaScript / Node.js (apify-client)</summary><pre><code>// npm install apify-client
+import { ApifyClient } from &#x27;apify-client&#x27;;
+
+const client = new ApifyClient({ token: &#x27;&lt;YOUR_APIFY_TOKEN&gt;&#x27; });
+
+const input = {
+    &quot;keywords&quot;: [
+        &quot;lindenbyte&quot;,
+        &quot;northpeak&quot;,
+        &quot;brightlark&quot;
+    ],
+    &quot;tlds&quot;: [
+        &quot;com&quot;,
+        &quot;io&quot;,
+        &quot;ai&quot;,
+        &quot;dev&quot;,
+        &quot;co&quot;,
+        &quot;app&quot;
+    ],
+    &quot;mode&quot;: &quot;check&quot;
+};
+
+// Start the Actor and wait for it to finish
+const run = await client.actor(&#x27;lindenbyte/bulk-domain-availability-expiry-checker&#x27;).call(input);
+
+// Read the results from the run&#x27;s default dataset
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items);
+</code></pre></details>
+<details><summary>curl (synchronous run, returns the results)</summary><pre><code># Runs the Actor synchronously and returns the dataset items as JSON
+curl -X POST &quot;https://api.apify.com/v2/acts/lindenbyte~bulk-domain-availability-expiry-checker/run-sync-get-dataset-items&quot; \
+  -H &quot;Authorization: Bearer &lt;YOUR_APIFY_TOKEN&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+  &quot;keywords&quot;: [
+    &quot;lindenbyte&quot;,
+    &quot;northpeak&quot;,
+    &quot;brightlark&quot;
+  ],
+  &quot;tlds&quot;: [
+    &quot;com&quot;,
+    &quot;io&quot;,
+    &quot;ai&quot;,
+    &quot;dev&quot;,
+    &quot;co&quot;,
+    &quot;app&quot;
+  ],
+  &quot;mode&quot;: &quot;check&quot;
+}&#x27;
+</code></pre>
+<p class="small muted">Synchronous runs time out after 300 seconds; for bigger jobs start a normal run and read the dataset when it finishes.</p></details>
+<h2>Ready-to-run example tasks</h2>
+<p>Each one opens on Apify with the input already filled in.</p>
+<ul class="tasks"><li><a href="https://apify.com/lindenbyte/bulk-domain-availability-expiry-checker/examples/brand-name-domain-finder">Brand name domain finder (name x TLD)</a><br><span class="small muted">Hunting for a startup or product name?</span></li><li><a href="https://apify.com/lindenbyte/bulk-domain-availability-expiry-checker/examples/domain-portfolio-expiry-monitor">Domain portfolio expiry and change monitor</a><br><span class="small muted">Watch a list of domains (yours or ones you want to buy) and get only the changes: renewals, registrar transfers, nameserver changes, expiry within 60 days, drops.</span></li><li><a href="https://apify.com/lindenbyte/bulk-domain-availability-expiry-checker/examples/bulk-whois-registrar-age-lookup">Bulk WHOIS alternative: registrar, creation and expiry date</a><br><span class="small muted">Look up the registrar, creation date (domain age), expiry date and EPP status of a list of domains from the official registry RDAP servers, the structured successor of WHOIS.</span></li><li><a href="https://apify.com/lindenbyte/bulk-domain-availability-expiry-checker/examples/typo-domain-brand-protection-monitor">Brand protection: watch typo and look-alike domains</a><br><span class="small muted">Watch typo and look-alike domains of your brand and see when one gets registered or changes registrar or nameservers.</span></li><li><a href="https://apify.com/lindenbyte/bulk-domain-availability-expiry-checker/examples/brand-country-domains-check">Is my brand free on country domains? (.de .fr .uk .nl)</a><br><span class="small muted">Check a brand name across country domains before expanding abroad: .de, .fr, .co.uk, .nl, .es, .ca and others.</span></li><li><a href="https://apify.com/lindenbyte/bulk-domain-availability-expiry-checker/examples/spf-dmarc-mx-record-check">SPF, DMARC and MX record check for many domains</a><br><span class="small muted">Get MX, SPF and DMARC records (plus A, AAAA and NS) for a list of company domains, next to registrar and expiry.</span></li></ul>
+<h2>Tutorials</h2>
+<ul class="tuts"><li><a href="https://dev.to/lindenbyte/find-a-free-brand-name-domain-across-6-tlds-and-watch-your-domain-portfolio-for-expiry-with-rdap-4hfj">Find a free brand-name domain across 6 TLDs (and watch your domain portfolio for expiry) with RDAP and Python</a> <span class="small muted">(dev.to, 2026-11-16)</span></li></ul>
+<p style="margin-top:2em"><a class="btn" href="https://apify.com/lindenbyte/bulk-domain-availability-expiry-checker">Run it on Apify</a> &nbsp; <a href="../index.html">Back to all Actors</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+<p>Built and maintained by Lindenbyte. Some content drafted with AI assistance.</p>
+<p><a href="https://apify.com/lindenbyte">Lindenbyte on Apify</a> &middot; <a href="https://dev.to/lindenbyte">Lindenbyte on dev.to</a> &middot; <a href="https://github.com/lindenbyte-studio">GitHub</a></p>
+<p class="small">Lindenbyte is an independent studio, not affiliated with Apify or with the data sources the Actors read.</p>
+</div></footer>
+</body>
+</html>
