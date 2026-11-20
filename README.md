@@ -4,7 +4,7 @@ Lindenbyte is a small studio building pay-per-result [Apify](https://apify.com) 
 
 Website with docs, code snippets and examples: **https://lindenbyte-studio.github.io**
 
-17 Actors, 90 ready-to-run example tasks, 16 tutorials.
+17 Actors, 90 ready-to-run example tasks, 17 tutorials.
 
 ## Lead lists from public data
 
@@ -14,7 +14,7 @@ Website with docs, code snippets and examples: **https://lindenbyte-studio.githu
 | [France New Company Finder (BODACC + SIRENE, by NAF & Dept)](https://apify.com/lindenbyte/france-new-companies) | Daily feed of newly registered French companies (legal entities only) from official BODACC creations, enriched with SIRENE: SIREN/SIRET, NAF, legal form, head office with GPS, employee range, capital, VAT number. Filter by date, NAF, département, region, legal form. | $0.002 per company ($2.00 per 1,000) | [Store](https://apify.com/lindenbyte/france-new-companies) · [Docs](https://lindenbyte-studio.github.io/actors/france-new-companies.html) · [Tutorial](https://dev.to/lindenbyte/get-a-daily-list-of-newly-registered-french-companies-in-your-niche-by-naf-code-and-departement-4ld3) |
 | [SEC Form D Feed: Recently Funded Companies & Private Placements](https://apify.com/lindenbyte/sec-form-d-recently-funded-companies) | Daily feed of new SEC Form D filings: companies that just raised money in private placements. Amount raised and offered, investors, industry, state, exemption, address and phone, straight from EDGAR. Filters, only-new-since-last-run, CSV ready. Pay per filing. | $0.006 per form D filing ($6.00 per 1,000) | [Store](https://apify.com/lindenbyte/sec-form-d-recently-funded-companies) · [Docs](https://lindenbyte-studio.github.io/actors/sec-form-d-recently-funded-companies.html) · [Tutorial](https://dev.to/lindenbyte/find-startups-that-just-raised-money-straight-from-sec-form-d-filings-a-free-data-take-on-funding-3lc6) |
 | [Company Hiring Signals Monitor: Open Jobs, New & Closed Roles](https://apify.com/lindenbyte/company-hiring-signals-monitor) | Paste company domains and get their open jobs straight from the official job-board APIs (Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Personio). Hiring-signal summaries per company, new and closed roles since the last run. Pay per result. | $0.0015 per job row ($1.50 per 1,000) | [Store](https://apify.com/lindenbyte/company-hiring-signals-monitor) · [Docs](https://lindenbyte-studio.github.io/actors/company-hiring-signals-monitor.html) · [Tutorial](https://dev.to/lindenbyte/use-open-job-postings-as-a-sales-signal-which-companies-are-hiring-for-what-from-just-a-domain-p9i) |
-| [Website Contact Page & Company Profile Finder](https://apify.com/lindenbyte/website-contact-company-profile-finder) | Turn a list of domains into company profiles: contact page URL, contact form provider (HubSpot, Typeform, CF7, Gravity Forms...), about/careers/pricing/privacy pages, company social profiles, logo, favicon, name and language. No personal data. Pay only for sites that load. | $0.003 per site profiled ($3.00 per 1,000) | [Store](https://apify.com/lindenbyte/website-contact-company-profile-finder) · [Docs](https://lindenbyte-studio.github.io/actors/website-contact-company-profile-finder.html) |
+| [Website Contact Page & Company Profile Finder](https://apify.com/lindenbyte/website-contact-company-profile-finder) | Turn a list of domains into company profiles: contact page URL, contact form provider (HubSpot, Typeform, CF7, Gravity Forms...), about/careers/pricing/privacy pages, company social profiles, logo, favicon, name and language. No personal data. Pay only for sites that load. | $0.003 per site profiled ($3.00 per 1,000) | [Store](https://apify.com/lindenbyte/website-contact-company-profile-finder) · [Docs](https://lindenbyte-studio.github.io/actors/website-contact-company-profile-finder.html) · [Tutorial](https://dev.to/lindenbyte/enrich-a-list-of-domains-with-contact-pages-form-tools-and-social-profiles-and-find-who-uses-3k4i) |
 
 ## Procurement, tenders and ads intelligence
 
@@ -50,6 +50,7 @@ Website with docs, code snippets and examples: **https://lindenbyte-studio.githu
 
 ## Tutorials
 
+- [Enrich a list of domains with contact pages, form tools and social profiles (and find who uses HubSpot forms)](https://dev.to/lindenbyte/enrich-a-list-of-domains-with-contact-pages-form-tools-and-social-profiles-and-find-who-uses-3k4i)
 - [Get alerts when a Shopify store drops a price, restocks or adds a product](https://dev.to/lindenbyte/get-alerts-when-a-shopify-store-drops-a-price-restocks-or-adds-a-product-2f3c)
 - [Use open job postings as a sales signal: which companies are hiring for what, from just a domain](https://dev.to/lindenbyte/use-open-job-postings-as-a-sales-signal-which-companies-are-hiring-for-what-from-just-a-domain-p9i)
 - [Find startups that just raised money, straight from SEC Form D filings (a free-data take on funding alerts)](https://dev.to/lindenbyte/find-startups-that-just-raised-money-straight-from-sec-form-d-filings-a-free-data-take-on-funding-3lc6)
