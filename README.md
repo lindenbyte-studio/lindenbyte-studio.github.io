@@ -4,7 +4,7 @@ Lindenbyte is a small studio building pay-per-result [Apify](https://apify.com) 
 
 Website with docs, code snippets and examples: **https://lindenbyte-studio.github.io**
 
-17 Actors, 90 ready-to-run example tasks, 17 tutorials.
+17 Actors, 90 ready-to-run example tasks, 18 tutorials.
 
 ## Lead lists from public data
 
@@ -28,8 +28,8 @@ Website with docs, code snippets and examples: **https://lindenbyte-studio.githu
 
 | Actor | What it does | Price | Links |
 |---|---|---|---|
-| [Sitemap Monitor: All URLs + New Pages Since Last Run](https://apify.com/lindenbyte/sitemap-monitor-new-pages) | Extract every URL from any website's XML sitemaps (robots.txt discovery, indexes, .xml.gz, hreflang, images) and schedule it to get only NEW pages since the last run. Optional HTTP status and redirect check. | $0.0005 per URL ($0.50 per 1,000) | [Store](https://apify.com/lindenbyte/sitemap-monitor-new-pages) · [Docs](https://lindenbyte-studio.github.io/actors/sitemap-monitor-new-pages.html) · [Tutorial](https://dev.to/lindenbyte/get-notified-when-a-competitor-publishes-new-pages-monitor-any-sitemap-for-new-urls-39g7) |
-| [RSS & Atom Feed Monitor - New Items Only + Feed Finder](https://apify.com/lindenbyte/rss-feed-monitor-new-items) | Read any RSS, Atom, RDF or JSON Feed (or just paste a website / YouTube channel URL and it finds the feed). Schedule it and get only NEW items since the last run, with keyword and date filters. Pay only for new items. | $0.0008 per new feed item ($0.80 per 1,000) | [Store](https://apify.com/lindenbyte/rss-feed-monitor-new-items) · [Docs](https://lindenbyte-studio.github.io/actors/rss-feed-monitor-new-items.html) |
+| [Sitemap Monitor: All URLs + New Pages Since Last Run](https://apify.com/lindenbyte/sitemap-monitor-new-pages) | Extract every URL from any website's XML sitemaps (robots.txt discovery, indexes, .xml.gz, hreflang, images) and schedule it to get only NEW pages since the last run. Optional HTTP status and redirect check. | $0.0005 per URL ($0.50 per 1,000) | [Store](https://apify.com/lindenbyte/sitemap-monitor-new-pages) · [Docs](https://lindenbyte-studio.github.io/actors/sitemap-monitor-new-pages.html) · [Tutorial](https://dev.to/lindenbyte/get-alerts-for-new-blog-posts-and-youtube-videos-without-duplicates-2a81) |
+| [RSS & Atom Feed Monitor - New Items Only + Feed Finder](https://apify.com/lindenbyte/rss-feed-monitor-new-items) | Read any RSS, Atom, RDF or JSON Feed (or just paste a website / YouTube channel URL and it finds the feed). Schedule it and get only NEW items since the last run, with keyword and date filters. Pay only for new items. | $0.0008 per new feed item ($0.80 per 1,000) | [Store](https://apify.com/lindenbyte/rss-feed-monitor-new-items) · [Docs](https://lindenbyte-studio.github.io/actors/rss-feed-monitor-new-items.html) · [Tutorial](https://dev.to/lindenbyte/get-alerts-for-new-blog-posts-and-youtube-videos-without-duplicates-2a81) |
 | [Shopify Catalog & Change Monitor: Prices, Stock, New Products](https://apify.com/lindenbyte/shopify-catalog-change-monitor) | Paste Shopify store domains and get their full public product catalog, or only what changed since the last run: new products, price drops, price increases, restocks, sell-outs and removed products. No browser, no login. Pay per result. | $0.0008 per product row ($0.80 per 1,000) | [Store](https://apify.com/lindenbyte/shopify-catalog-change-monitor) · [Docs](https://lindenbyte-studio.github.io/actors/shopify-catalog-change-monitor.html) · [Tutorial](https://dev.to/lindenbyte/get-alerts-when-a-shopify-store-drops-a-price-restocks-or-adds-a-product-2f3c) |
 | [Bulk Website Screenshots + PDF + Visual Change Detection](https://apify.com/lindenbyte/bulk-website-screenshots) | Screenshot hundreds of URLs per run: full page or viewport, desktop/laptop/tablet/mobile, PNG/JPEG/WebP, optional PDF. Hides cookie banners and chat widgets. Schedule it to detect visual changes since the last run. | $0.003 per screenshot ($3.00 per 1,000) | [Store](https://apify.com/lindenbyte/bulk-website-screenshots) · [Docs](https://lindenbyte-studio.github.io/actors/bulk-website-screenshots.html) · [Tutorial](https://dev.to/lindenbyte/screenshot-100-websites-in-one-run-and-get-alerted-when-a-competitors-page-visually-changes-3a64) |
 
@@ -50,6 +50,7 @@ Website with docs, code snippets and examples: **https://lindenbyte-studio.githu
 
 ## Tutorials
 
+- [Get alerts for new blog posts and YouTube videos without duplicates](https://dev.to/lindenbyte/get-alerts-for-new-blog-posts-and-youtube-videos-without-duplicates-2a81)
 - [Enrich a list of domains with contact pages, form tools and social profiles (and find who uses HubSpot forms)](https://dev.to/lindenbyte/enrich-a-list-of-domains-with-contact-pages-form-tools-and-social-profiles-and-find-who-uses-3k4i)
 - [Get alerts when a Shopify store drops a price, restocks or adds a product](https://dev.to/lindenbyte/get-alerts-when-a-shopify-store-drops-a-price-restocks-or-adds-a-product-2f3c)
 - [Use open job postings as a sales signal: which companies are hiring for what, from just a domain](https://dev.to/lindenbyte/use-open-job-postings-as-a-sales-signal-which-companies-are-hiring-for-what-from-just-a-domain-p9i)
