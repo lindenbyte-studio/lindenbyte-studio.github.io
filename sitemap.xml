@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lindenbyte-studio.github.io/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://lindenbyte-studio.github.io/</loc><lastmod>2026-11-23</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/tutorials.html</loc><lastmod>2026-11-21</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/bulk-domain-availability-expiry-checker.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/bulk-pagespeed-core-web-vitals.html</loc><lastmod>2026-11-17</lastmod></url>
@@ -10,12 +10,12 @@
   <url><loc>https://lindenbyte-studio.github.io/actors/eu-ted-tenders-scraper.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/france-new-companies.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/google-ads-transparency-scraper.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://lindenbyte-studio.github.io/actors/rss-feed-monitor-new-items.html</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://lindenbyte-studio.github.io/actors/rss-feed-monitor-new-items.html</loc><lastmod>2026-11-23</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/sam-gov-contract-opportunities.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/sec-form-d-recently-funded-companies.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/seo-audit-crawler-bulk-site-checker.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/shopify-catalog-change-monitor.html</loc><lastmod>2026-11-19</lastmod></url>
-  <url><loc>https://lindenbyte-studio.github.io/actors/sitemap-monitor-new-pages.html</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://lindenbyte-studio.github.io/actors/sitemap-monitor-new-pages.html</loc><lastmod>2026-11-21</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/uk-companies-house-new-companies.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/wayback-domain-history.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://lindenbyte-studio.github.io/actors/website-contact-company-profile-finder.html</loc><lastmod>2026-11-20</lastmod></url>
@@ -24,6 +24,7 @@
   <url><loc>https://lindenbyte-studio.github.io/templates/cleaning-business-tracker.html</loc></url>
   <url><loc>https://lindenbyte-studio.github.io/templates/etsy-seller-profit-tracker.html</loc></url>
   <url><loc>https://lindenbyte-studio.github.io/templates/freelancer-invoice-tracker.html</loc></url>
+  <url><loc>https://lindenbyte-studio.github.io/templates/home-renovation-budget-planner.html</loc></url>
   <url><loc>https://lindenbyte-studio.github.io/templates/landlord-rental-tracker.html</loc></url>
   <url><loc>https://lindenbyte-studio.github.io/templates/painting-estimate-calculator.html</loc></url>
   <url><loc>https://lindenbyte-studio.github.io/templates/pressure-washing-quote-calculator.html</loc></url>
